@@ -9,9 +9,14 @@
     "serve": "gulp serve",
     "start": "gulp serve",
     "test": "karma start",
+    "testHeadless": "karma start --browsers PhantomJS",
+    "testAuto": "karma start --browsers PhantomJS --auto-watch --no-single-run",
     "watch": "gulp serve",
     "webpack": "gulp webpack"
   },
+  "pre-push": [
+    "testHeadless"
+  ],
   "dependencies": {
     "angular": "^1.6.3",
     "angular-animate": "^1.6.4",
@@ -54,8 +59,6 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.19.0",
     "del": "^2.2.0",
-    "dyson": "^1.0.2",
-    "dyson-generators": "^0.1.1",
     "eslint": "^3.19.0",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-mocha": "^4.9.0",

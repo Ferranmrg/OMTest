@@ -20,18 +20,18 @@ describe('AccountTable', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a headers property ', () => {
       let controller = makeController();
-      expect(controller).to.have.property('name');
+      expect(controller).to.have.property('headers');
     });
-  });
 
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(AccountTableTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-    });
+    it('should send change order event', () => {
+      let controller = makeController();
+      let called = false
+      controller.changeSortOrder = ($event) => {called = !called};
+      controller.setOrderBy('company_name')
+      expect(called).to.be.ok;
+    })
   });
 
   describe('Component', () => {

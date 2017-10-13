@@ -1,5 +1,4 @@
 import ResultCounterModule from './resultCounter';
-import ResultCounterController from './resultCounter.controller';
 import ResultCounterComponent from './resultCounter.component';
 import ResultCounterTemplate from './resultCounter.html';
 
@@ -14,23 +13,15 @@ describe('ResultCounter', () => {
     };
   }));
 
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-
-  describe('Controller', () => {
-    // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-      let controller = makeController();
-      expect(controller).to.have.property('name');
-    });
-  });
-
   describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(ResultCounterTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+    it('has firstResult', () => {
+      expect(ResultCounterTemplate).to.match(/{{\s?\$ctrl\.firstResult\s?}}/g);
+    });
+    it('has lastResult', () => {
+      expect(ResultCounterTemplate).to.match(/{{\s?\$ctrl\.lastResult\s?}}/g);
+    });
+    it('has total', () => {
+      expect(ResultCounterTemplate).to.match(/{{\s?\$ctrl\.total\s?}}/g);
     });
   });
 
@@ -42,8 +33,5 @@ describe('ResultCounter', () => {
       expect(component.template).to.equal(ResultCounterTemplate);
     });
 
-    it('invokes the right controller', () => {
-      expect(component.controller).to.equal(ResultCounterController);
-    });
   });
 });

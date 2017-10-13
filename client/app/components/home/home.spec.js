@@ -3,7 +3,17 @@ import HomeModule from './home'
 describe('Home', () => {
   let $rootScope, $state, $location, $componentController, $compile;
 
-  beforeEach(window.module(HomeModule));
+  beforeEach(window.module(HomeModule, ($provide)=> {
+    $provide.value('authService', {
+      initToken: (username, pwd) => {token: 'token'}
+    });
+    $provide.value('$cookies', {
+      get: (input) => input
+    });
+    $provide.value('Accounts', {
+
+    });
+  }));
 
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
@@ -31,24 +41,20 @@ describe('Home', () => {
       });
     });
 
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
-    });
-  });
-
-  describe('View', () => {
-    // view layer specs.
-    let scope, template;
-
-    beforeEach(() => {
-      scope = $rootScope.$new();
-      template = $compile('<home></home>')(scope);
-      scope.$apply();
+    it('initialices all properties', () => {
+      expect(controller).to.have.property('authService');
+      expect(controller).to.have.property('cookies');
+      expect(controller).to.have.property('Accounts');
+      expect(controller).to.have.property('orderDirection');
+      expect(controller).to.have.property('orderBy');
+      expect(controller).to.have.property('currentPage');
+      expect(controller).to.have.property('pageSize');
+      expect(controller).to.have.property('textSearch');
     });
 
-    it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('Found in home.html');
+    it('should change page', () => {
+      controller.changePage({page : 2});
+      expect(controller.searchCriteria.page).to.eq(2);
     });
-
   });
 });
