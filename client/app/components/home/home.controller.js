@@ -49,6 +49,7 @@ class HomeController {
 
   changeSearch({ searchCriteria }) {
     this.searchCriteria = searchCriteria;
+    this.textSearch = searchCriteria.search;
     this._requestAccounts();
   }
 
