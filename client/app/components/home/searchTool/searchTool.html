@@ -20,8 +20,8 @@
         <option>20</option>
       </select>
     <div ng-show="$ctrl.displayAdvanced" class="advanced col-md-12 col-sm-12">
-      <multiselect label-name="city" options="$ctrl.cityOptions" on-select="$ctrl.changeCity($event)"></multiselect>
-      <multiselect label-name="zip" options="$ctrl.zipOptions" on-select="$ctrl.changeZip($event)"></multiselect>
+      <span class="label label-info">City : <multiselect label-name="city" options="$ctrl.cityOptions" on-select="$ctrl.changeCity($event)"></multiselect></span>
+      <span class="label label-info">Zip : <multiselect label-name="zip" options="$ctrl.zipOptions" on-select="$ctrl.changeZip($event)"></multiselect></span>
     </div>
   </div>
 </section>
