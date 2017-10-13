@@ -1,7 +1,7 @@
 import 'jquery';
 import 'normalize.css';
 import 'bootstrap-loader';
-
+import 'bootstrap-multiselect';
 // Angular
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';

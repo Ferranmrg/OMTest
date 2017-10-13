@@ -3,5 +3,13 @@
 .accountTable {
   thead {
     background-color: $primaryColor;
+    color: $white;
+    th{
+      cursor: pointer;
+    }
+    .glyphicon {
+      font-size: 10px;
+      margin-right: 3px;
+    }
   }
 }

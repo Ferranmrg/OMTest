@@ -3,12 +3,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <search-tool on-search-change="$changeSearch($event)"></search-tool>
+        <search-tool search-criteria="$ctrl.searchCriteria" on-search-change="$ctrl.changeSearch($event)"></search-tool>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <account-table accounts="$ctrl.accounts"></account-table>
+        <account-table accounts="$ctrl.accounts" change-sort-order="$ctrl.changeOrderBy($event)"></account-table>
       </div>
       <div class="col-md-12 col-sm-12">
         <result-counter first-result="$ctrl.firstItemDisplayed" last-result="$ctrl.lastItemDisplayed" total="$ctrl.totalSize"></result-counter>

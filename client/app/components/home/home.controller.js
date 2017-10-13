@@ -5,7 +5,7 @@ class HomeController {
     this.homeService = homeService;
     this.cookies = $cookies;
     this.Accounts = Accounts;
-    this.orderDirection = "DESC";
+    this.orderDirection = "ASC";
     this.orderBy = '';
     this.currentPage = 1;
     this.pageSize = 3;
@@ -16,12 +16,12 @@ class HomeController {
     const username = "test@test.test"
     const password = "testtest"
     this.authService.initToken(username, password);
+    this._buildData();
     this._requestAccounts();
   }
 
   _requestAccounts() {
-    let data = this._buildData();
-    this.homeService.requestAccounts(data).then((response) => {
+    this.homeService.requestAccounts(this.searchCriteria).then((response) => {
       this.currentPage = response.data.page;
       this.pageSize = response.data.pageSize;
       this.rawAccounts = response.data.result;
@@ -35,19 +35,38 @@ class HomeController {
   }
 
   _buildData(){
-    return {
+    this.searchCriteria = {
       "order": this.orderDirection,
       "orderBy": this.orderBy,
       "page": this.currentPage,
       "pageSize": this.pageSize,
       "search": this.textSearch,
-       // Only with simple search “filter”: {   // Only with advanced search “zip”: [“33233”, “1123”], “city”: [“Berlin”] } }
+      "filter": {},
      };
   }
 
   changePage({ page }) {
     this.currentPage = page;
+    this._buildData();
     this._requestAccounts();
+  }
+
+  changeSearch({ searchCriteria }) {
+    this.searchCriteria = searchCriteria;
+    this._requestAccounts();
+  }
+
+  changeOrderBy({ orderBy }) {
+    if(orderBy === this.orderBy)
+       this._changeOrderAscDesc();
+
+    this.orderBy = orderBy;
+    this._buildData();
+    this._requestAccounts();
+  }
+
+  _changeOrderAscDesc(){
+    this.orderDirection = this.orderDirection === 'ASC' ? 'DESC' : 'ASC';
   }
 }
 

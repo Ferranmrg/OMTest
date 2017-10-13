@@ -2,15 +2,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Omnea id</th>
-        <th>Company Name</th>
-        <th>Street</th>
-        <th>Postcode</th>
-        <th>City</th>
-        <th>Phone</th>
-        <th>Plan</th>
-        <th>Directories</th>
-        <th>Last Submission</th>
+        <th ng-repeat="(key,header) in $ctrl.headers" ng-click="$ctrl.setOrderBy(key)"><span class="glyphicon glyphicon-sort"></span>{{header}}</th>
       </tr>
     </thead>
     <tr ng-repeat="account in $ctrl.accounts | filter:f">

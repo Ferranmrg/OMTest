@@ -5,6 +5,7 @@ import './accountTable.scss';
 let accountTableComponent = {
   bindings: {
     accounts: '<',
+    changeSortOrder: '&'
   },
   template,
   controller,

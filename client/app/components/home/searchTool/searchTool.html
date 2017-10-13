@@ -1,0 +1,31 @@
+<section class="searchTool">
+  <div class="row">
+    <div class="col-md-5 col-sm-5">
+      <div class="input-group stylish-input-group">
+        <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.searchText" ng-change="$ctrl.changeSearchText()">
+        <span class="input-group-addon">
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <button type="button" class="btn btn-info" ng-click="$ctrl.reset()">Reset</button>
+    <button type="button" class="btn btn-warning" ng-click="$ctrl.toggleAdvanced()">Advanced</button>
+      <select class="page-select btn" id="sel1" ng-model="$ctrl.maxPerPage" ng-change="$ctrl.changeMaxPerPage()">
+        <option>1</option>
+        <option selected>3</option>
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+      </select>
+    <div ng-show="$ctrl.displayAdvanced" class="advanced col-md-12 col-sm-12">
+      <select id="multiselect" multiple="multiple" ng-model="$ctrl.city" ng-change="$ctrl.changeCity()">
+        <option>Berlin</option>
+        <option>Münster</option>
+        <option>Köln</option>
+        <option>Bremen</option>
+      </select>
+    </div>
+  </div>
+</section>
