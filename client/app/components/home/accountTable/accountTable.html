@@ -1,0 +1,28 @@
+<section class="accountTable">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Omnea id</th>
+        <th>Company Name</th>
+        <th>Street</th>
+        <th>Postcode</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Plan</th>
+        <th>Directories</th>
+        <th>Last Submission</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="account in $ctrl.accounts | filter:f">
+      <td>{{account.omnea_id}}</td>
+      <td>{{account.company_name}}</td>
+      <td>{{account.street}}</td>
+      <td>{{account.postcode}}</td>
+      <td>{{account.city}}</td>
+      <td>{{account.phone}}</td>
+      <td>{{account.plan}}</td>
+      <td>{{account.directories}}</td>
+      <td>{{account.last_submission}}</td>
+    </tr>
+  </table>
+</section>
