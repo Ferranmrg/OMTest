@@ -38,8 +38,7 @@ class auth {
     let data =  {"username" : username, "password" : password};
     let config = {
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": '*',
+        "Content-Type": "application/json"
       },
     }
     // NOTE: Cors missing, requires changes from back
