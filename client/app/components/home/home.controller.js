@@ -1,7 +1,6 @@
 class HomeController {
-  constructor(authService, homeService, $cookies, Accounts) {
+  constructor(homeService, $cookies, Accounts) {
     'ngInject';
-    this.authService = authService;
     this.homeService = homeService;
     this.cookies = $cookies;
     this.Accounts = Accounts;
@@ -13,9 +12,6 @@ class HomeController {
   }
 
   $onInit(){
-    const username = "test@test.test"
-    const password = "testtest"
-    this.authService.initToken(username, password);
     this._buildData();
     this._requestAccounts();
   }
