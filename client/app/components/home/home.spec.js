@@ -42,7 +42,6 @@ describe('Home', () => {
     });
 
     it('initialices all properties', () => {
-      expect(controller).to.have.property('authService');
       expect(controller).to.have.property('cookies');
       expect(controller).to.have.property('Accounts');
       expect(controller).to.have.property('orderDirection');
