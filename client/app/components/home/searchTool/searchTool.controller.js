@@ -6,6 +6,10 @@ class SearchToolController {
     this.displayAdvanced = false;
     this.maxPerPage = 3;
     this.city = '';
+    //TODO enhancement get this data from a service or
+    // from the existing ones instead of "harcoding" them
+    this.cityOptions = ['Berlin','Münster','Köln','Bremen'];
+    this.zipOptions = ['28199','48163','51147','12487'];
   }
 
   $onInit(){
@@ -17,14 +21,8 @@ class SearchToolController {
       "search": '',
       "filter": {},
   }
-  this._startMultiselect();
 }
 
-_startMultiselect(){
-  $(document).ready(function() {
-       $('#multiselect').multiselect();
-   });
-}
 
   changeSearchText(){
     if(this.searchText.length < MIN_TO_SEARCH) return;
@@ -32,8 +30,13 @@ _startMultiselect(){
     this.onSearchChange({ $event : {searchCriteria :this.searchCriteria}})
   }
 
-  changeCity(){
-    this.searchCriteria.filter.city = this.city;
+  changeCity({ selected }){
+    this.searchCriteria.filter.city = selected;
+    this.onSearchChange({ $event : {searchCriteria :this.searchCriteria}})
+  }
+
+  changeZip({ selected }){
+    this.searchCriteria.filter.zip = selected;
     this.onSearchChange({ $event : {searchCriteria :this.searchCriteria}})
   }
 
@@ -52,8 +55,8 @@ _startMultiselect(){
   }
 
   _resetMultiSelect(){
-    $('#multiselect').multiselect('deselectAll', false)
-    $('#multiselect').multiselect('updateButtonText');
+    $('[id="multiselect"]').multiselect('deselectAll', false)
+    $('[id="multiselect"]').multiselect('updateButtonText');
   }
 
   toggleAdvanced (){
