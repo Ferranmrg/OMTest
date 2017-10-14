@@ -16,6 +16,16 @@ class HomeController {
     this._requestAccounts();
   }
 
+  _buildData(){
+    this.searchCriteria = {
+      "order": this.orderDirection,
+      "orderBy": this.orderBy,
+      "page": this.currentPage,
+      "pageSize": this.pageSize,
+      "search": this.textSearch,
+      "filter": {},
+    };
+  }
   _requestAccounts() {
     this.homeService.requestAccounts(this.searchCriteria).then((response) => {
       this.currentPage = response.data.page;
@@ -30,16 +40,6 @@ class HomeController {
     });
   }
 
-  _buildData(){
-    this.searchCriteria = {
-      "order": this.orderDirection,
-      "orderBy": this.orderBy,
-      "page": this.currentPage,
-      "pageSize": this.pageSize,
-      "search": this.textSearch,
-      "filter": {},
-     };
-  }
 
   changePage({ page }) {
     this.currentPage = page;

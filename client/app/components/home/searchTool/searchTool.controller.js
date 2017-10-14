@@ -42,6 +42,7 @@ class SearchToolController {
 
   changeMaxPerPage(){
     this.searchCriteria.pageSize = parseInt(this.maxPerPage);
+    this.searchCriteria.page = 1;
     this.onSearchChange({ $event : {searchCriteria :this.searchCriteria}})
   }
 
