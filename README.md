@@ -27,7 +27,7 @@ Then the first thing we do is request the account data from back. Here, based on
 
 "Is very important that this component could accept any JSON structure or attributes names on an easy way"
 
-I've created a Schema-Model system, so in case we have changes in back, just need to change the schema route.
+I've created a Schema-Model system, so in case we have changes in back, just need to change the route in schema.
 
 The rest of components are based on a standard component relation with : RoutedComponents > FullstateComponents > StatelessComponents
 
