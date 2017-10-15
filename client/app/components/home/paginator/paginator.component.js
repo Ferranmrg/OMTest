@@ -1,6 +1,5 @@
 import template from './paginator.html';
 import controller from './paginator.controller';
-import './paginator.scss';
 
 let paginatorComponent = {
   bindings: {

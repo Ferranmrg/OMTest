@@ -1,22 +1,27 @@
 const LOGIN_URL = 'https://apidev.omnea.org/auth/login';
-import q from 'Q';
-class auth {
-  constructor($http, $cookies) {
+
+class Auth {
+  constructor($http, $cookies, $q) {
     'ngInject';
     this.http = $http;
     this.cookies = $cookies;
+    this.q = $q;
   }
 
   initToken(username, password){
-    let defer = q.defer();
-    let promise = defer.promise;
+    let defered = this.q.defer();
+    let promise = defered.promise;
 
     if(!this._checkIfValidToken()) {
       this._requestToken(username,password).then((response)=> {
-        defer.resolve()
+        this.cookies.put('TOKEN', response.data.token);
+        this.cookies.put('TOKEN_EXP_TIME', response.data.token_exp);
+        defered.resolve();
+      },(error) => {
+        defered.reject();
       });
     }else{
-      defer.resolve();
+      defered.resolve();
     }
 
     return promise;
@@ -43,16 +48,8 @@ class auth {
     }
     // NOTE: Cors missing, requires changes from back
     // solved with local proxy
-    return this.http.post(LOGIN_URL, data, config).then(
-      (response) => {
-        this.cookies.put('TOKEN', response.data.token);
-        this.cookies.put('TOKEN_EXP_TIME', response.data.token_exp);
-      },
-      (error) => {
-        console.log(error)
-      }
-    );
+    return this.http.post(LOGIN_URL, data, config);
   }
 }
 
-export default auth;
+export default Auth;

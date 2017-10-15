@@ -13,11 +13,11 @@
     <button type="button" class="btn btn-info" ng-click="$ctrl.reset()">Reset</button>
     <button type="button" class="btn btn-warning" ng-click="$ctrl.toggleAdvanced()">Advanced</button>
       <select class="page-select btn" id="sel1" ng-model="$ctrl.maxPerPage" ng-change="$ctrl.changeMaxPerPage()">
-        <option>1</option>
-        <option selected>3</option>
-        <option>5</option>
-        <option>10</option>
-        <option>20</option>
+        <option ng-value="1">1</option>
+        <option ng-value="3">3</option>
+        <option ng-value="5">5</option>
+        <option ng-value="10">10</option>
+        <option ng-value="20">20</option>
       </select>
     <div ng-show="$ctrl.displayAdvanced" class="advanced col-md-12 col-sm-12">
       <span class="label label-info">City : <multiselect label-name="city" options="$ctrl.cityOptions" on-select="$ctrl.changeCity($event)"></multiselect></span>

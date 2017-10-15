@@ -1,3 +1,6 @@
 <ul class="pagination">
-  <li><a ng-repeat="pageNumber in $ctrl._.range(0,$ctrl.pages)" ng-click="$ctrl.onChangePage({$event: {page : pageNumber + 1}})">{{pageNumber + 1}}</a></li>
+  <li>
+    <a
+    ng-repeat="pageNumber in $ctrl.getRange(0,$ctrl.pages)"
+    ng-click="$ctrl.onClick(pageNumber)">{{pageNumber + 1}}</a></li>
 </ul>

@@ -1,4 +1,4 @@
-const SORT_EXCEPTIONS = ['submitted_directories_count','plan.plan_name'];
+const SORT_EXCEPTIONS = ['submitted_directories_count','plan'];
 
 class AccountTableController {
   constructor() {
@@ -9,7 +9,7 @@ class AccountTableController {
       zip : 'Postcode',
       city : 'City',
       phone_number: 'Phone',
-      'plan.plan_name': 'Plan',
+      plan: 'Plan',
       submitted_directories_count: 'Directories',
       last_submit: 'Last Submission'
     }
