@@ -19,6 +19,14 @@ TDD mode
 npm run testAuto
 ```
 
+### CORS NOTE!
+
+It may be possible that you'll have CORS problems in that case install.
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-app-launcher-info-dialog
+
+on your chrome to be able to run the project.
+
 ## About the structure 
 
 Based on the specs, I've initialized the token with an AuthService , we give this method (app.controller) a hardcoded user and password (This should go on a login component with a form or some oAuth service) to retrieve the token.
